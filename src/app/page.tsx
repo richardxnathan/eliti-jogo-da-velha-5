@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Home() {
 
   const [jogador, setJogador] = useState("X");
-  const [jogoDaVelha] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [jogoDaVelha, setJogoDaVelha] = useState(["", "", "", "", "", "", "", "", ""]);
   const [finalizado, setFinalizado] = useState(false);
 
   function jogar(posicao: number) {
@@ -54,6 +54,12 @@ export default function Home() {
     }
   }
 
+  function zerarJogo() {
+    setJogador("X");
+    setFinalizado(false);
+    setJogoDaVelha(["", "", "", "", "", "", "", "", ""]);
+  }
+
   return (
     <>
       <header>
@@ -80,6 +86,8 @@ export default function Home() {
             </tr>
           </tbody>
         </table>
+
+        <button onClick={() => zerarJogo()} className='mt-10 border-2 bg-white text-black w-[175px] h-[70px] text-lg rounded-full hover:bg-black hover:border-white hover:text-white'>Jogar novamente!</button>
 
       </main>
     </>
